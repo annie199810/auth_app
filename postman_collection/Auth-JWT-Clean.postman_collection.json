@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "Auth-JWT-Clean",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "auth-jwt-clean-collection"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"alice2\",\n  \"email\": \"alice2@example.com\",\n  \"password\": \"mypassword\"\n}"
+        },
+        "url": {
+          "raw": "https://auth-app-w0yy.onrender.com/api/auth/register",
+          "protocol": "https",
+          "host": ["auth-app-w0yy","onrender","com"],
+          "path": ["api","auth","register"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"emailOrUsername\": \"alice2@example.com\",\n  \"password\": \"mypassword\"\n}"
+        },
+        "url": {
+          "raw": "https://auth-app-w0yy.onrender.com/api/auth/login",
+          "protocol": "https",
+          "host": ["auth-app-w0yy","onrender","com"],
+          "path": ["api","auth","login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "  const json = pm.response.json();",
+              "  if (json.token) {",
+              "    pm.environment.set('authToken', json.token);",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{authToken}}" }
+        ],
+        "url": {
+          "raw": "https://auth-app-w0yy.onrender.com/api/user/me",
+          "protocol": "https",
+          "host": ["auth-app-w0yy","onrender","com"],
+          "path": ["api","user","me"]
+        }
+      }
+    }
+  ]
+}
