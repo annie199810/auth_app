@@ -1,4 +1,4 @@
-// middleware/authMiddleware.js
+
 const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.user; // attach user (id, username, email) to request
+    req.user = decoded.user; 
     next();
   } catch (err) {
     console.error('Token verify error', err);

@@ -1,9 +1,9 @@
-// controllers/userController.js
+
 const User = require('../models/User');
 
 const getProfile = async (req, res) => {
   try {
-    // req.user set by authMiddleware
+  
     const userId = req.user.id;
 
     const user = await User.findById(userId).select('-password -__v');

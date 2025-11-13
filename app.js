@@ -1,4 +1,4 @@
-// app.js
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// connect to DB
+
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
   console.error('MONGO_URI missing in .env');
@@ -19,7 +19,7 @@ connectDB(MONGO_URI).catch(err => {
   process.exit(1);
 });
 
-// routes
+
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 
