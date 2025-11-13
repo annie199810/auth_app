@@ -1,0 +1,21 @@
+{
+  "name": "auth-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^x.x.x",
+    "cors": "^x.x.x",
+    "dotenv": "^x.x.x",
+    "express": "^x.x.x",
+    "express-validator": "^x.x.x",
+    "jsonwebtoken": "^x.x.x",
+    "mongoose": "^x.x.x"
+  },
+  "devDependencies": {
+    "nodemon": "^x.x.x"
+  }
+}
